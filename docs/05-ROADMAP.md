@@ -22,8 +22,8 @@ These docs are the design constitution. Every decision cites them.
 
 **Status:** shipped.
 
-- ✅ Next.js 16 + TypeScript + Tailwind v4 in `web/`
-- ✅ Brand tokens wired as CSS variables in `web/src/app/globals.css`
+- ✅ Next.js 16 + TypeScript + Tailwind v4 at repo root
+- ✅ Brand tokens wired as CSS variables in `src/app/globals.css`
 - ✅ Self-hosted fonts: Bricolage Grotesque + Inter + JetBrains Mono
 - ✅ `clsx` + `tailwind-merge` + `motion` installed
 - ✅ Component scaffolding: `Mark`, `Nav`, `Marquee`, `Stamp`, `Hero`, `LiveTimer`, `TodaysDrop`, `Brands`, `HowItWorks`, `Footer`

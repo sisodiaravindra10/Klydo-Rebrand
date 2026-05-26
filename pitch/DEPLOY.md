@@ -1,44 +1,30 @@
 # Deploy guide: GitHub + Vercel
 
-The Next.js project lives in `web/`. Vercel and Next.js are the same family, so deploys are one-click once the repo is on GitHub.
+The Next.js app lives at the repo root. Vercel and Next.js are the same family, so deploys are one-click.
 
-## 1. Create the GitHub repo
+## 1. Push to GitHub
 
 ```bash
 cd "/Users/zop.dev/Downloads/klydo redesign"
 
-# If git isn't initialised yet:
-git init -b main
-
-# Add and commit everything
+git status
 git add .
-git commit -m "Klydo speculative rebrand: foundation + landing + 32-route app"
-
-# Create the GitHub repo and push. Either:
-
-# Option A: with the gh CLI (easiest)
-gh repo create klydo-rebrand --public --source=. --remote=origin --push
-
-# Option B: if you don't have gh
-# 1. Create an empty repo at github.com/new (name it klydo-rebrand)
-# 2. Then:
-git remote add origin https://github.com/[your-username]/klydo-rebrand.git
-git push -u origin main
+git commit -m "Update"
+git push
 ```
 
-If the CEO is the audience, **public repo** is better — they can browse code directly without a permission ask.
+The repo is already at https://github.com/sisodiaravindra10/Klydo-Rebrand.
 
-> **One thing to double-check before pushing:** there are no secrets in the repo. There shouldn't be any (the project has no API keys, no `.env`), but run `grep -rni "api[_-]key\|secret\|token" --include="*.ts" --include="*.tsx" --include="*.env*"` from the root if you want to be sure.
+> **Before pushing, scan for secrets** if you've added anything new:
+> `grep -rni "api[_-]key\|secret\|token" --include="*.ts" --include="*.tsx" --include="*.env*" .`
 
 ## 2. Connect to Vercel
-
-Two ways. **The dashboard way is more reliable for first-time setup.**
 
 ### Dashboard (recommended)
 
 1. Open [vercel.com/new](https://vercel.com/new), sign in with your GitHub account.
-2. Click **Import** next to the `klydo-rebrand` repo.
-3. **Root directory:** click "Edit" and set it to `web` (the Next.js app lives in `web/`, not the repo root).
+2. Click **Import** next to the `Klydo-Rebrand` repo.
+3. **Root Directory:** leave as-is (the Next.js app is at the repo root now).
 4. **Framework Preset:** Vercel auto-detects Next.js. Leave defaults.
 5. **Environment variables:** none required. The project has zero env dependencies.
 6. Click **Deploy**.
@@ -49,7 +35,7 @@ You should have a live URL in about 2 minutes. It'll look like `klydo-rebrand-[h
 
 ```bash
 npm i -g vercel
-cd "/Users/zop.dev/Downloads/klydo redesign/web"
+cd "/Users/zop.dev/Downloads/klydo redesign"
 vercel
 # Answer the prompts: link to your account, name the project, deploy.
 ```

@@ -22,7 +22,7 @@ Everything you need to present the Klydo speculative rebrand to the CEO.
 
 ## What to keep handy in case the CEO replies
 
-- The codebase is in `web/`. Real Next.js 16, real Tailwind v4, real components. Open to any engineer they introduce you to.
+- The codebase is at the repo root (src/, public/, package.json). Real Next.js 16, real Tailwind v4, real components. Open to any engineer they introduce you to.
 - The strategic docs are in `docs/`. Audit, principles, IA, brand system, roadmap. Self-contained and well-organized.
 - `PRODUCT.md` and `DESIGN.md` at the project root summarize the constitution in one page each.
 
@@ -32,15 +32,15 @@ If you change something in the app and want fresh screenshots:
 
 ```bash
 # Make sure the dev server is running first:
-cd "/Users/zop.dev/Downloads/klydo redesign/web"
+cd "/Users/zop.dev/Downloads/klydo redesign"
 npm run dev
 
 # In another terminal:
-cd "/Users/zop.dev/Downloads/klydo redesign/web"
+cd "/Users/zop.dev/Downloads/klydo redesign"
 node capture.mjs
 
 # Then rebuild the PDF:
-cd "../pitch"
+cd pitch
 python3 build-deck.py
 ```
 

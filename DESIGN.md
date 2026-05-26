@@ -1,6 +1,6 @@
 # Klydo design system
 
-Living tokens at `web/src/app/globals.css`. Canonical longform in `docs/04-BRAND-SYSTEM.md`. This file is the short reference impeccable needs.
+Living tokens at `src/app/globals.css`. Canonical longform in `docs/04-BRAND-SYSTEM.md`. This file is the short reference impeccable needs.
 
 ## Color strategy
 
@@ -65,7 +65,7 @@ Sharp by default. Radius 0 for cards, panels, color-block sections. Round only:
 - buttons, chips, pills: `999px`
 - sheets / modals: `12–20px`
 
-## Components shipped (web/src/components/)
+## Components shipped (src/components/)
 
 - `Mark` — wordmark (lime square + "klydo" Bricolage extra-bold)
 - `Nav` — sticky paper nav, dark marquee ticker above
@@ -111,4 +111,4 @@ No stock "happy shoppers." No mannequin shots. No green-screen lifestyle.
 ## See also
 
 - `docs/04-BRAND-SYSTEM.md` — full token reference + voice rules
-- `web/src/app/globals.css` — live CSS variables
+- `src/app/globals.css` — live CSS variables

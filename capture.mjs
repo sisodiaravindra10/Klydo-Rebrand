@@ -1,7 +1,7 @@
 import { chromium } from "playwright";
 import { mkdir } from "node:fs/promises";
 
-const OUT = "../pitch/screenshots";
+const OUT = "pitch/screenshots";
 await mkdir(OUT, { recursive: true });
 
 const HOST = "http://localhost:3000";

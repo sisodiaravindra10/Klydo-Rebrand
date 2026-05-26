@@ -2,7 +2,7 @@
 
 > The tokens, type, color, and motion that every Klydo surface inherits. Change a value here, every screen changes.
 
-> **v2 — graphic-poster direction.** This doc was rewritten after iteration 1 was rejected as too editorial / Vogue-restrained. Live in the codebase at `web/src/app/globals.css`. See `klydo-direction-pivot` memory for the why.
+> **v2 — graphic-poster direction.** This doc was rewritten after iteration 1 was rejected as too editorial / Vogue-restrained. Live in the codebase at `src/app/globals.css`. See `klydo-direction-pivot` memory for the why.
 
 ---
 
