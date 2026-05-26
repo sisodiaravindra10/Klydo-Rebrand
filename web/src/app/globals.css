@@ -1,0 +1,190 @@
+@import "tailwindcss";
+
+/* ──────────────────────────────────────────────────────────────────
+   Klydo design tokens (v2: loud, color-block, graphic)
+   ─────────────────────────────────────────────────────────────── */
+:root {
+  /* Surfaces */
+  --paper: #faf7f2;
+  --paper-soft: #f0ede7;
+  --paper-line: rgba(15, 15, 15, 0.08);
+
+  /* Ink */
+  --ink: #0e0e0e;
+  --ink-soft: #2a2a2a;
+  --ink-quiet: #7a7a7a;
+
+  /* Brand colors used as color-blocks, not quiet accents */
+  --lime: #d8ff3d;
+  --lime-deep: #b5e600;
+  --pink: #ff3d7f;
+  --pink-deep: #e02368;
+  --cobalt: #2d6eff;
+  --cobalt-deep: #1f56e0;
+  --sunset: #ff6b35;
+  --clay: #c2452d;
+
+  /* Signals */
+  --mint: #1f7a4c;
+  --amber: #b8860b;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-soft: var(--paper-soft);
+  --color-paper-line: var(--paper-line);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-quiet: var(--ink-quiet);
+  --color-lime: var(--lime);
+  --color-lime-deep: var(--lime-deep);
+  --color-pink: var(--pink);
+  --color-pink-deep: var(--pink-deep);
+  --color-cobalt: var(--cobalt);
+  --color-cobalt-deep: var(--cobalt-deep);
+  --color-sunset: var(--sunset);
+  --color-clay: var(--clay);
+  --color-mint: var(--mint);
+  --color-amber: var(--amber);
+
+  --font-display: var(--font-bricolage), "Inter", system-ui, sans-serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   Base
+   ─────────────────────────────────────────────────────────────── */
+html {
+  background: var(--paper);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+  scrollbar-color: var(--ink-quiet) var(--paper);
+}
+
+body {
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01", "cv11";
+  min-height: 100dvh;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--lime);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   Animations
+   ─────────────────────────────────────────────────────────────── */
+@keyframes klydo-rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes klydo-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes klydo-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+@keyframes klydo-marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes klydo-stamp-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.rise { animation: klydo-rise 720ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+.fade { animation: klydo-fade 800ms ease-out both; }
+.pulse { animation: klydo-pulse 1.8s ease-in-out infinite; }
+
+.marquee-track {
+  animation: klydo-marquee 38s linear infinite;
+}
+.marquee-track-fast { animation: klydo-marquee 22s linear infinite; }
+.marquee-track-slow { animation: klydo-marquee 60s linear infinite; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+
+.stamp-spin {
+  animation: klydo-stamp-spin 18s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .marquee-track,
+  .marquee-track-fast,
+  .marquee-track-slow,
+  .stamp-spin { animation: none !important; }
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   Utilities
+   ─────────────────────────────────────────────────────────────── */
+.hairline { background: var(--paper-line); height: 1px; width: 100%; }
+.hairline-on-ink { background: rgba(250, 247, 242, 0.18); height: 1px; width: 100%; }
+
+.display {
+  font-family: var(--font-display);
+  letter-spacing: -0.035em;
+}
+
+.label {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  line-height: 16px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.tabnum { font-variant-numeric: tabular-nums; }
+
+/* Sticker tilt utilities */
+.tilt-left { transform: rotate(-3deg); }
+.tilt-right { transform: rotate(3deg); }
+.tilt-hard-left { transform: rotate(-7deg); }
+.tilt-hard-right { transform: rotate(7deg); }
+
+/* Card hover: gentle sticker tilt feedback */
+.tilt-hover {
+  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+  transform-origin: center;
+}
+.tilt-hover:hover {
+  transform: translateY(-4px) rotate(-1.5deg);
+}
+.tilt-hover:active {
+  transform: translateY(-2px) rotate(0deg) scale(0.99);
+}
+.tilt-hover:nth-child(even):hover {
+  transform: translateY(-4px) rotate(1.5deg);
+}
+
+/* Marquee grab cursor */
+.marquee {
+  cursor: grab;
+}
+.marquee:active {
+  cursor: grabbing;
+}
