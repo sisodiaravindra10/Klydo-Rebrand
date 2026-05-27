@@ -55,40 +55,7 @@ const statusDot: Record<Status, string> = {
   returned: "bg-ink-quiet",
 };
 
-export default async function OrdersPage(props: PageProps<"/app/orders">) {
-  const params = await props.searchParams;
-  const empty = params.empty === "1";
-
-  if (empty) {
-    return (
-      <PhoneFrame surface="paper">
-        <StatusBar />
-        <div className="relative z-30 px-5 pt-1 pb-3">
-          <div className="flex items-center justify-between">
-            <Link
-              href="/app/you"
-              aria-label="Back"
-              className="flex h-9 w-9 items-center justify-center rounded-full bg-ink/5 active:scale-95"
-            >
-              <IconBack size={20} />
-            </Link>
-            <div className="label text-ink-quiet">orders</div>
-          </div>
-        </div>
-        <EmptyState
-          title="no orders yet"
-          subtitle="try your first drop tonight. eight pieces, hand-picked. courier waits while you try."
-          ctaLabel="see tonight's drop"
-          ctaHref="/app/drops"
-          secondaryLabel="open the feed"
-          secondaryHref="/app/feed"
-          accent="pink"
-        />
-        <TabBar />
-      </PhoneFrame>
-    );
-  }
-
+export default function OrdersPage() {
   return (
     <PhoneFrame surface="paper">
       <StatusBar />

@@ -4,7 +4,6 @@ import { Suspense } from "react";
 import { PhoneFrame } from "@/components/app/PhoneFrame";
 import { StatusBar } from "@/components/app/StatusBar";
 import { TabBar } from "@/components/app/TabBar";
-import { EmptyState } from "@/components/app/EmptyState";
 import { products, formatINR } from "@/components/app/products";
 import { IconClose, IconPin } from "@/components/app/icons";
 import { ConfirmToast } from "@/components/app/ConfirmToast";
@@ -18,31 +17,7 @@ const basket = [
 
 const subtotal = basket.reduce((s, item) => s + item.product.price, 0);
 
-export default async function BagPage(props: PageProps<"/app/bag">) {
-  const params = await props.searchParams;
-  const empty = params.empty === "1";
-
-  if (empty) {
-    return (
-      <PhoneFrame surface="paper">
-        <StatusBar />
-        <div className="relative z-30 px-5 pt-1 pb-3">
-          <div className="label text-ink-quiet">your bag</div>
-        </div>
-        <EmptyState
-          title="nothing in your bag"
-          subtitle="tonight's drop opens at 7. eight hand-picked pieces, ready to try."
-          ctaLabel="see tonight's drop"
-          ctaHref="/app/drops"
-          secondaryLabel="open the feed"
-          secondaryHref="/app/feed"
-          accent="pink"
-        />
-        <TabBar />
-      </PhoneFrame>
-    );
-  }
-
+export default function BagPage() {
   return (
     <PhoneFrame surface="paper">
       <Suspense fallback={null}>

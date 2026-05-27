@@ -30,40 +30,7 @@ const cardBg: Record<string, string> = {
 
 const filters = ["all", "this week", "in your size", "under ₹1k"];
 
-export default async function SavedPage(props: PageProps<"/app/saved">) {
-  const params = await props.searchParams;
-  const empty = params.empty === "1";
-
-  if (empty) {
-    return (
-      <PhoneFrame surface="paper">
-        <StatusBar />
-        <div className="relative z-30 px-5 pt-1 pb-3">
-          <div className="flex items-center justify-between">
-            <Link
-              href="/app/you"
-              aria-label="Back"
-              className="flex h-9 w-9 items-center justify-center rounded-full bg-ink/5 active:scale-95"
-            >
-              <IconBack size={20} />
-            </Link>
-            <div className="label text-ink-quiet">saved</div>
-          </div>
-        </div>
-        <EmptyState
-          title="nothing saved yet"
-          subtitle="tap the heart on any piece in the feed to save it here. we'll ping you when it's back in a drop."
-          ctaLabel="open the feed"
-          ctaHref="/app/feed"
-          secondaryLabel="see tonight's drop"
-          secondaryHref="/app/drops"
-          accent="pink"
-        />
-        <TabBar />
-      </PhoneFrame>
-    );
-  }
-
+export default function SavedPage() {
   return (
     <PhoneFrame surface="paper">
       <StatusBar />
