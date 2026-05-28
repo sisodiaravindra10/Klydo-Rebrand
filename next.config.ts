@@ -1,17 +1,19 @@
 import type { NextConfig } from "next";
 
-const isProd = process.env.NODE_ENV === "production";
+// GitHub Pages serves from /Klydo-Rebrand/. Vercel and other hosts serve from /.
+// The workflow at .github/workflows/deploy.yml sets DEPLOY_TARGET=pages, so:
+//   - Pages build → basePath = /Klydo-Rebrand, static export
+//   - Vercel / local dev → basePath = "", normal Next.js build
+const isPages = process.env.DEPLOY_TARGET === "pages";
 
 const nextConfig: NextConfig = {
-  // GitHub Pages static export config.
-  // In dev, output is undefined so `next dev` runs normally.
-  output: isProd ? "export" : undefined,
-  basePath: isProd ? "/Klydo-Rebrand" : "",
-  assetPrefix: isProd ? "/Klydo-Rebrand/" : "",
-  trailingSlash: true,
+  output: isPages ? "export" : undefined,
+  basePath: isPages ? "/Klydo-Rebrand" : "",
+  assetPrefix: isPages ? "/Klydo-Rebrand/" : "",
+  trailingSlash: isPages ? true : undefined,
   images: {
-    // GitHub Pages doesn't run the Next image optimizer.
-    unoptimized: true,
+    // Pages can't run the optimizer. On Vercel the optimizer is available.
+    unoptimized: isPages,
     remotePatterns: [
       { protocol: "https", hostname: "images.unsplash.com" },
       { protocol: "https", hostname: "picsum.photos" },
